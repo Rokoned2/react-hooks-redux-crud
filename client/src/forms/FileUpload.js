@@ -2,23 +2,20 @@ import React, { useState, useEffect } from 'react'
 import Dropzone from 'react-dropzone';
 import { Plus  } from 'react-bootstrap-icons';
 import Axios from 'axios';
-function FileUpload({ currentUserImg, refreshFunction, isSubmitted = false ,setIsSubmitted}) {
-    const [Image, setImage] = useState(currentUserImg ? currentUserImg : "")
-console.log('Image', Image)
+function FileUpload({ initialUserImg, refreshFunction, isSubmitted = false ,setIsSubmitted}) {
+    const [Image, setImage] = useState(initialUserImg ? initialUserImg : "")
     useEffect(() => {
-        setImage(currentUserImg ? currentUserImg : "");
-      }, [currentUserImg]);
+        setImage(initialUserImg ? initialUserImg : "");
+      }, [initialUserImg]);
 
     useEffect(() => {
-        console.log('isSubmitted', isSubmitted)
         if(isSubmitted) setImage('')
         setIsSubmitted(false)
-      }, [isSubmitted]);
+      }, [setIsSubmitted, isSubmitted]);
 
       
 
     const onDrop = (file) => {
-        console.log('acceptedFile', file)
 
         let formData = new FormData();
         const config = {

@@ -24,7 +24,7 @@ const App = () => {
     <Container className="my-5">
       <h1>CRUD App with Hooks and Redux</h1>
       <Row>
-        <Col className="my-5">
+        <Col sm className="my-5">
           {editing ? (
             <Fragment>
               <h2>Edit user</h2>

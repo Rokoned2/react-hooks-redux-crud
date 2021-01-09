@@ -30,7 +30,7 @@ return (
             </td>
             <td>{user.name}</td>
             <td>{user.username}</td>
-            <td>
+            <td className="d-flex">
               <Button
                 variant="primary"
                 onClick={() => {

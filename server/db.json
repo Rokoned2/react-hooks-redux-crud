@@ -1,3 +1,22 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": 4,
+      "image": "http://localhost:5000/uploads\\1610164946600_external-content.duckduckgo.com.jpg",
+      "name": "sdsdsd",
+      "username": "sddssdsdsdds"
+    },
+    {
+      "id": 5,
+      "image": "http://localhost:5000/uploads\\1610165599084_external-content.duckduckgo.com.jpg",
+      "name": "sssssssssssss",
+      "username": "ddddddddddddd"
+    },
+    {
+      "id": 6,
+      "image": "http://localhost:5000/uploads\\1610165607027_hq720.webp",
+      "name": "sdds",
+      "username": "sdssds"
+    }
+  ]
 }
