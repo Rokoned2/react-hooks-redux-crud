@@ -8,7 +8,7 @@ client/node_modules/
 
 # production
 /build
-server/uploads/
+uploads/
 
 # misc
 .DS_Store

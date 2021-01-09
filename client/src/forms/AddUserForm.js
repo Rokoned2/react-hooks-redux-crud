@@ -21,6 +21,7 @@ const AddUserForm = ({ createUser }) => {
     console.log('newImage', newImage)
     setUser({ ...user, image: newImage });
   };
+  
   return (
     <Form
       onSubmit={(event) => {
@@ -33,7 +34,7 @@ const AddUserForm = ({ createUser }) => {
         setUser(initialFormState);
       }}
     >
-      <FileUpload refreshFunction={updateImage} isSubmitted={isSubmitted} />
+      <FileUpload refreshFunction={updateImage} isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/>
       <Form.Group controlId="formGroupName">
         <Form.Label>Name</Form.Label>
         <Form.Control

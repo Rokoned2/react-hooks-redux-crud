@@ -7,6 +7,7 @@ import { editUser } from '../actions';
 
 const EditUserForm = (props) => {
   const [user, setUser] = useState(props.currentUser);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     setUser(props.currentUser);
@@ -34,7 +35,7 @@ const EditUserForm = (props) => {
 
       }}
     >
-      <FileUpload currentUserImg={user.image} refreshFunction={updateImage}/>
+      <FileUpload currentUserImg={user.image} refreshFunction={updateImage} isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/>
 
       <Form.Group controlId="formGroupName">
         <Form.Label>Name</Form.Label>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Dropzone from 'react-dropzone';
 import { Plus  } from 'react-bootstrap-icons';
 import Axios from 'axios';
-function FileUpload({ currentUserImg, refreshFunction, isSubmitted = false}) {
+function FileUpload({ currentUserImg, refreshFunction, isSubmitted = false ,setIsSubmitted}) {
     const [Image, setImage] = useState(currentUserImg ? currentUserImg : "")
 console.log('Image', Image)
     useEffect(() => {
@@ -10,7 +10,9 @@ console.log('Image', Image)
       }, [currentUserImg]);
 
     useEffect(() => {
-        if(isSubmitted) setImage() 
+        console.log('isSubmitted', isSubmitted)
+        if(isSubmitted) setImage('')
+        setIsSubmitted(false)
       }, [isSubmitted]);
 
       
