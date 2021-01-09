@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 
 const App = () => {
 
-  const initialFormState = { id: null, image: [], name: "", username: "" };
+  const initialFormState = { id: null, image: '', name: "", username: "" };
 
   // Setting state
   const [currentUser, setCurrentUser] = useState(initialFormState);

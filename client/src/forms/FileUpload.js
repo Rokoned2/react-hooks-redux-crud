@@ -3,14 +3,14 @@ import Dropzone from 'react-dropzone';
 import { Plus  } from 'react-bootstrap-icons';
 import Axios from 'axios';
 function FileUpload({ currentUserImg, refreshFunction, isSubmitted = false}) {
-    const [Images, setImages] = useState(currentUserImg ? [currentUserImg] : [])
-
+    const [Image, setImage] = useState(currentUserImg ? currentUserImg : "")
+console.log('Image', Image)
     useEffect(() => {
-        setImages(currentUserImg ? [currentUserImg] : []);
+        setImage(currentUserImg ? currentUserImg : "");
       }, [currentUserImg]);
 
     useEffect(() => {
-        if(isSubmitted) setImages([]) 
+        if(isSubmitted) setImage() 
       }, [isSubmitted]);
 
       
@@ -27,8 +27,8 @@ function FileUpload({ currentUserImg, refreshFunction, isSubmitted = false}) {
         Axios.post('http://localhost:5000/api/users/uploadImage', formData, config)
             .then(response => {
                 if (response.data.success) {
-                    setImages([...Images, `http://localhost:5000/${response.data.image}`])
-                    refreshFunction([...Images, `http://localhost:5000/${response.data.image}`])
+                    setImage(`http://localhost:5000/${response.data.image}`)
+                    refreshFunction(`http://localhost:5000/${response.data.image}`)
 
                 } else {
                     alert('Failed to save the Image in Server')
@@ -37,15 +37,9 @@ function FileUpload({ currentUserImg, refreshFunction, isSubmitted = false}) {
     }
 
 
-    const onDelete = (image) => {
-        console.log('image ondelete', image)
-        const currentIndex = Images.indexOf(image);
-
-        let newImage = [...Images]
-        newImage.splice(currentIndex, 1)
-
-        setImages(newImage)
-        // refreshFunction(newImage)
+    const onDelete = () => {
+        setImage('')
+        refreshFunction('')
     }
 
     return (
@@ -70,16 +64,14 @@ function FileUpload({ currentUserImg, refreshFunction, isSubmitted = false}) {
                 )}
             </Dropzone>
 
+            {Image &&(
             <div style={{ display: 'flex', width: '350px', height: '240px', overflowX: 'scroll' }}>
 
-                {Images.map((image, index) => (
-                    <div onClick={() => onDelete(image)}>
-                        <img style={{ minWidth: '300px', width: '300px', height: '240px' }} src={`${image}`} alt={`productImg-${index}`} />
+                    <div onClick={onDelete}>
+                        <img style={{ minWidth: '300px', width: '300px', height: '240px' }} src={Image} alt={`productImg`} />
                     </div>
-                ))}
-
-
             </div>
+            )}
 
         </div>
     )

@@ -27,7 +27,7 @@ const EditUserForm = (props) => {
       className="my-4"
       onSubmit={(event) => {
         event.preventDefault();
-        if (!user.name || !user.username || user.image === undefined) return;
+        if (!user.name || !user.username || !user.image ) return;
         // props.updateUser(user.id, user);
         props.editUser(user.id, user);
         props.setEditing(false);

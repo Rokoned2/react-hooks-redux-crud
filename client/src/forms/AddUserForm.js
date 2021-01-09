@@ -7,7 +7,7 @@ import { createUser } from "../actions";
 import { connect } from "react-redux";
 
 const AddUserForm = ({ createUser }) => {
-  const initialFormState = { id: null, image: [], name: "", username: "" };
+  const initialFormState = { id: null, image: '', name: "", username: "" };
   const [user, setUser] = useState(initialFormState);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -18,14 +18,15 @@ const AddUserForm = ({ createUser }) => {
   };
 
   const updateImage = (newImage) => {
-    console.log("newImage", newImage);
-    setUser({ ...user, image: newImage[0] });
+    console.log('newImage', newImage)
+    setUser({ ...user, image: newImage });
   };
   return (
     <Form
       onSubmit={(event) => {
         event.preventDefault();
-        if (!user.name || !user.username || user.image === undefined) return;
+        console.log('user on submit', user)
+        if (!user.name || !user.username || !user.image) return;
         createUser(user);
         setIsSubmitted(true);
         // props.addUser(user);
